@@ -1,6 +1,6 @@
 name : release CI/CD
 
-# Controls when the action will run. l2
+# Controls when the action will run. l23
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
