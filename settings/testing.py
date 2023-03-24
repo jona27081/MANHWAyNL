@@ -86,7 +86,6 @@ TEST_PORT = config("TEST_PORT", default=5432)
 
 DATABASES = {
     'default': {
-        'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': TEST_DATABASE,
         'USER': TEST_USER,
@@ -96,7 +95,6 @@ DATABASES = {
         'TEST': {
             'NAME': TEST_DATABASE,
         },
-    }
     }
 }
 
