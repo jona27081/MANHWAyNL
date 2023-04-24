@@ -1,12 +1,12 @@
 build:
- adsoftsito:  # cambiar por su namespace de okteto
+ jona27081:  # cambiar por su namespace de okteto
    image: okteto.dev/jona27081:latest  # cambiar por su namespace de okteto
 
 deploy:
  - okteto build # build the image with the latest code
  - kubectl apply -f manifests # create all the resources in kubernetes
 dev:
- adsoftsito:
+ jona27081:
    command: bash
    sync:
-   - .:/manhwas   # cambiar por su proyecto
+   - .:/MANHWAyNL   # cambiar por su proyecto
