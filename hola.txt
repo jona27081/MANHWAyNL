@@ -1,0 +1,9 @@
+mutation{
+  refreshToken (
+      token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IlVzdWFyaW8xIiwiZXhwIjoxNjgzNjc5MDI1LCJvcmlnSWF0IjoxNjgzNjc4NzI1fQ.N0lU01irA_qjnoY7ev-_NKi8RQuTw1_jgoZiUV-49Mg")
+  {
+      payload
+      refreshExpiresIn
+      token
+  }
+}
