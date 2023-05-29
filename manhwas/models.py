@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Manhwas(models.Model):
     titulo = models.TextField(default=' ', blank=False)
@@ -11,4 +12,9 @@ class Manhwas(models.Model):
     pais = models.TextField (default=' ', blank=True)
     clasificacion = models.TextField (default=1, blank=True)
     adaptacion = models.TextField (default="No", blank=False)
+    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
 
+
+class Vote(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    manhwa = models.ForeignKey('manhwas.Manhwas', related_name='votes', on_delete=models.CASCADE)
