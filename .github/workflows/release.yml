@@ -56,11 +56,11 @@ jobs:
     - name: update MY_DEV_PASSWORD
       run: sed -i 's/MY_DEV_PASSWORD/${{secrets.DEV_PASSWORD}}/g' manifests/EmilianoTorres123-configmap.yaml      
     - name: update MY_DEV_HOST 
-      run: sed -i 's/MY_DEV_HOST /${{secrets.DEV_HOST }}/g' manifests/EmilianoTorres123-configmap.yaml      
+      run: sed -i 's/MY_DEV_HOST/${{secrets.DEV_HOST }}/g' manifests/EmilianoTorres123-configmap.yaml      
     - name: update MY_DEV_PORT 
-      run: sed -i 's/MY_DEV_PORT /${{secrets.DEV_PORT }}/g' manifests/EmilianoTorres123-configmap.yaml
+      run: sed -i 's/MY_DEV_PORT/${{secrets.DEV_PORT }}/g' manifests/EmilianoTorres123-configmap.yaml
     - name: show config 
-      run: cat manifests/EmilianoTorres123-configmap.yaml
+      run: cat manifests/jona27081-configmap.yaml
       
     - uses: okteto/context@2.7.0
       with:
