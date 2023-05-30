@@ -1,13 +1,13 @@
-#2
-name : release CI/CD
+name: release CI/CD
 
-# Controls when the action will run. l23
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ release ]
   pull_request:
     branches: [ release ]
+    
     
 jobs:
   release:
@@ -16,6 +16,7 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.8]
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -43,8 +44,24 @@ jobs:
         fail_on_empty: false
     - name: show .env file
       run: cat .env
-    - name: Run Tests
-      run: python manage.py test --settings=settings.testing -v 3 --keepdb
+    - name: run test
+      run: python manage.py test --settings=senttings.testing -v 3 --keepdb
+      
+    - name: update DEV_SECRET_KEY
+      run: sed -i 's/MY_DEV_SECRET_KEY/${{secrets.DEV_SECRET_KEY}}/g' manifests/EmilianoTorres123-configmap.yaml      
+    - name: update MY_DEV_DATABASE
+      run: sed -i 's/MY_DEV_DATABASE/${{secrets.DEV_DATABASE}}/g' manifests/EmilianoTorres123-configmap.yaml      
+    - name: update MY_DEV_USER
+      run: sed -i 's/MY_DEV_USER/${{secrets.DEV_USER}}/g' manifests/EmilianoTorres123-configmap.yaml      
+    - name: update MY_DEV_PASSWORD
+      run: sed -i 's/MY_DEV_PASSWORD/${{secrets.DEV_PASSWORD}}/g' manifests/EmilianoTorres123-configmap.yaml      
+    - name: update MY_DEV_HOST 
+      run: sed -i 's/MY_DEV_HOST /${{secrets.DEV_HOST }}/g' manifests/EmilianoTorres123-configmap.yaml      
+    - name: update MY_DEV_PORT 
+      run: sed -i 's/MY_DEV_PORT /${{secrets.DEV_PORT }}/g' manifests/EmilianoTorres123-configmap.yaml
+    - name: show config 
+      run: cat manifests/EmilianoTorres123-configmap.yaml
+      
     - uses: okteto/context@2.7.0
       with:
        token: ${{ secrets.OKTETO_TOKEN }}
@@ -52,5 +69,6 @@ jobs:
       uses: okteto/pipeline@2.7.0
       with:
         name: jona27081 # cambiar por su namespace
-        timeout: 5m
+        timeout: 10m
+
 
