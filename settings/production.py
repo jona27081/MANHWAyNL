@@ -85,7 +85,7 @@ PROD_DATABASE = config("DEV_DATABASE", default='')
 PROD_USER = config("DEV_USER", default='')
 PROD_PASSWORD = config("DEV_PASSWORD", default='')
 PROD_HOST = config("DEV_HOST", default='')
-PROD_PORT = config("DEV_PORT", default=5432)
+PROD_PORT = "5432"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
